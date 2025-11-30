@@ -39,9 +39,31 @@ class CategoryController extends Controller
 
     public function show($param)
     {
-        $data = Category::where('slug', $param)
-        ->firstOrFail();
-        return $data;
+        $data = Category::where('slug', $param)->firstOrFail();
+        return view('category.show', compact('data'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = Category::findOrFail($id);
+
+        $request->validate([
+            'cat_name' => ['required','string', 'min:3', 'max:40'],
+            'desc' => ['required'],
+        ]);
+
+        // data yang akan dikirim ke database
+        $simpan = [
+            'category_name' => $request->input('cat_name'),
+            'desc' => $request->input('desc'),
+            'slug' => Str::slug($request->input('cat_name').'-'.random_int(0000, 9999))
+        ];
+
+        // mengubah data
+        $data->update($simpan);
+        return redirect()->route('category.show', $data->slug)
+        ->with('success', 'Data berhasil diubah');
+
     }
 
 }
