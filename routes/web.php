@@ -11,3 +11,4 @@ Route::get('category', [CategoryController::class, 'index'])->name('category.ind
 Route::post('category', [CategoryController::class, 'store'])->name('category.store');
 Route::get('category/{param}', [CategoryController::class, 'show'])->name('category.show');
 Route::put('category/{param}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('category/{param}', [CategoryController::class, 'destroy'])->name('category.destroy');

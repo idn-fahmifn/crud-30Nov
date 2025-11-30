@@ -66,4 +66,12 @@ class CategoryController extends Controller
 
     }
 
+     public function destroy($id)
+    {
+        $data = Category::findOrFail($id);
+        $data->delete();
+        return redirect()->route('category.index')
+        ->with('success', 'Data berhasil dihapus');
+    }
+
 }

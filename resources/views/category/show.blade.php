@@ -10,20 +10,39 @@
 @endsection
 
 @section('button-modal')
-    <form action="" method="post">
+    <form action="{{ route('category.destroy', $data->id) }}" method="post">
         @csrf
         @method('delete')
 
         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#launchModal">
             ✏️
         </button>
-        <button type="submit" onclick="confirm('Yakin mau dihapus?')" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#launchModal">
+        <button type="submit" onclick="return confirm('Yakin mau dihapus?')" class="btn btn-outline-danger">
             🗑️
         </button>
     </form>
 @endsection
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>⚠️ Gagal menyimpan data</strong> Silakan periksa kembali.
+            <ol>
+                @foreach ($errors->all() as $item)
+                    <li>{{ $item }}</li>
+                @endforeach
+            </ol>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    @if (session('success'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong> ✅ Berhasil </strong> {{ session('success') }}.
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="card">
         <div class="card-body">
             <div class="card-title h5">Category Detail</div>
