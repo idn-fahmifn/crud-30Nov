@@ -16,27 +16,8 @@
 @endsection
 
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>⚠️ Gagal menyimpan data</strong> Silakan periksa kembali.
-            <ol>
-                @foreach ($errors->all() as $item)
-                    <li>{{ $item }}</li>
-                @endforeach
-            </ol>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
-    @if (session('success'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong> ✅ Berhasil </strong> {{ session('success') }}.
-            
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
     <div class="row">
+
         @forelse ($data as $item)
             <div class="col-md-3">
                 <div class="card">
@@ -50,13 +31,6 @@
                 </div>
             </div>
         @empty
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body text-center py-4">
-                        <p>⚠️ Data tidak ditemukan</p>
-                    </div>
-                </div>
-            </div>
         @endforelse
     </div>
 

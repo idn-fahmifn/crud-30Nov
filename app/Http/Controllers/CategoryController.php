@@ -10,7 +10,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('category.index');
+        $data = Category::all();
+        return view('category.index', compact('data'));
     }
 
     public function store(Request $request)
@@ -34,6 +35,13 @@ class CategoryController extends Controller
         // setelah kirim data, redirect ke halaman index
         return redirect()->route('category.index')->with('success', 'Data berhasil disimpan');
 
-
     }
+
+    public function show($param)
+    {
+        $data = Category::where('slug', $param)
+        ->firstOrFail();
+        return $data;
+    }
+
 }

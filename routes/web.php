@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::post('category', [CategoryController::class, 'store'])->name('category.store');
+Route::get('category/{param}', [CategoryController::class, 'show'])->name('category.show');
