@@ -36,15 +36,23 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-body">
-                <p class="h3">@yield('title')</p>
-                <p class="h5">@yield('sub-title')</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="h3">@yield('title')</p>
+                        <span class="">@yield('sub-title')</span>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        @yield('button-modal')
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="card mt-4 p-2">
             @yield('content')
         </div>
     </div>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
