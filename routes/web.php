@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('tampilan', 'template.template');
+Route::get('category', [CategoryController::class, 'index'])->name('category.index');

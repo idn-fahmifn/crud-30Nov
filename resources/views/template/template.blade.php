@@ -36,8 +36,8 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-body">
-                <p class="h3">Judul halaman</p>
-                <p class="h5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, iure. Incidunt dignissimos expedita, eveniet rem voluptates fugit officiis et excepturi.</p>
+                <p class="h3">@yield('title')</p>
+                <p class="h5">@yield('sub-title')</p>
             </div>
         </div>
         <div class="card mt-4 p-2">
