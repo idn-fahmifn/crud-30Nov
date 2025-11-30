@@ -38,7 +38,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="" method="post">
+                <form action="{{ route('category.store') }}" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group my-2">
