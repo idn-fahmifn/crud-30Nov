@@ -10,4 +10,12 @@ class CategoryController extends Controller
     {
         return view('category.index');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'cat_name' => ['required','string', 'min:3', 'max:40'],
+            'desc' => ['required'],
+        ]);
+    }
 }
