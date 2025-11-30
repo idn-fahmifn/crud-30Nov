@@ -33,6 +33,19 @@
         </div>
     </nav>
 
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <p class="h3">Judul halaman</p>
+                <p class="h5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, iure. Incidunt dignissimos expedita, eveniet rem voluptates fugit officiis et excepturi.</p>
+            </div>
+        </div>
+
+        @yield('content')
+
+    </div>
+    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
