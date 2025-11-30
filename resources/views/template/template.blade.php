@@ -40,9 +40,9 @@
                 <p class="h5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, iure. Incidunt dignissimos expedita, eveniet rem voluptates fugit officiis et excepturi.</p>
             </div>
         </div>
-
-        @yield('content')
-
+        <div class="card mt-4 p-2">
+            @yield('content')
+        </div>
     </div>
     
 
