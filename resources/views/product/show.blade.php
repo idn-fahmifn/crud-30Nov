@@ -84,15 +84,37 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="{{ route('category.update', $data->id) }}" method="post">
+                 <form action="{{ route('product.update', $data->id) }}" enctype="multipart/form-data" method="post">
                     @csrf
-                    @method('put')
+                    @method('PUT')
 
                     <div class="modal-body">
                         <div class="form-group my-2">
-                            <label for="">Category Name</label>
-                            <input type="text" required value="{{ $data->category_name }}" class="form-control my-2"
-                                name="cat_name">
+                            <label for="">Product Name</label>
+                            <input type="text" value="{{ $data->product_name }}" required class="form-control my-2" name="prod_name">
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="">Category Product</label>
+                            <select name="category" class="form-control" required>
+                                <option value="{{ $data->category_id }}">- {{ $data->category->category_name }} -</option>
+
+                                @foreach ($category as $item)
+                                    <option value="{{ $item->id }}"> {{ $item->category_name }} </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="">Price</label>
+                            <input type="number" value="{{ $data->price }}" required class="form-control my-2" name="price_product">
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="">Stock</label>
+                            <input type="number" value="{{ $data->stok }}" required class="form-control my-2" name="stock_product">
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="">Image Product</label>
+                            <input type="file" class="form-control my-2" name="image_product">
                         </div>
                         <div class="form-group my-2">
                             <label for="">Description</label>
