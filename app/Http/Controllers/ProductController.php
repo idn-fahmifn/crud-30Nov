@@ -28,34 +28,33 @@ class ProductController extends Controller
             'image_product' => ['required', 'file', 'mimes:png,jpg,jpeg,svg,webp,heic'],
             'desc' => ['required']
         ]);
-
         // data yang harus disimpan : disesuaikan dengan database
-
         $simpan = [
             'category_id' => $request->input('category'),
             'product_name' => $request->input('prod_name'),
             'price' => $request->input('price_product'),
             'stock' => $request->input('stock_product'),
             'desc' => $request->input('desc'),
-            'slug' => Str::slug($request->prod_name).random_int(0, 9999)
+            'slug' => Str::slug($request->prod_name) . random_int(0, 9999)
         ];
-
         // kondisi saat ada nilai input file gambar
-        if($request->hasFile('image_product')){
+        if ($request->hasFile('image_product')) {
             $gambar = $request->file('image_product');
             $path = 'public/images/products';
             $ext = $gambar->getClientOriginalExtension();
-            $nama = 'myproduct_'.Carbon::now('Asia/jakarta')->format('Ymdhis').'.'.$ext; //myproduct_20251206103450.png
+            $nama = 'myproduct_' . Carbon::now('Asia/jakarta')->format('Ymdhis') . '.' . $ext; //myproduct_20251206103450.png
             $simpan['image'] = $nama;
-
             // menyimpan gambar ke storage : 
             $gambar->storeAs($path, $nama);
         }
-
         Product::create($simpan);
+        return redirect()->route('product.index')->with('success', 'Product Created');
+    }
 
-        return redirect()->route('product.index')->with('success','Product Created'); 
-
+    public function show($param)
+    {
+        $data = Product::where('slug', $param)->firstOrFail();
+        return view('product.show', compact('data'));
     }
 
 }

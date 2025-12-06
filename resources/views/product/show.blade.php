@@ -2,11 +2,11 @@
 
 {{-- Judul Halaman --}}
 @section('title')
-    {{ $data->category_name }}
+    {{ $data->product_name }}
 @endsection
 
 @section('sub-title')
-    Detail about {{ $data->category_name }}
+    Detail about {{ $data->product_name }}
 @endsection
 
 @section('button-modal')
@@ -45,28 +45,34 @@
     @endif
     <div class="card">
         <div class="card-body">
-            <div class="card-title h5">Category Detail</div>
+            <div class="card-title h5">Product Detail</div>
 
-            <div class="table-responsive">
+            <div class="table-responsive mt-4">
                 <table class="table table-bordered">
                     <tr>
-                        <td>Category Product</td>
-                        <td>{{ $data->category_name }}</td>
+                        <td>Product Name</td>
+                        <td>{{ $data->product_name }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td>Price</td>
+                        <td>{{ $data->price }}</td>
+                    </tr>
+                    <tr>
+                        <td>Stock</td>
+                        <td>{{ $data->stock }}</td>
+                    </tr>
+                    <tr>
+                        <td>
                             {{ $data->desc }}
+                        </td>
+                        <td class="text-center">
+                            <img src="{{ asset('storage/images/products/' . $data->image) }}" width="200" alt=""
+                                class="img-fluid">
                         </td>
                     </tr>
                 </table>
             </div>
 
-        </div>
-    </div>
-
-    <div class="card mt-2">
-        <div class="card-body">
-            <div class="card-title h5">List Product</div>
         </div>
     </div>
 
