@@ -39,25 +39,25 @@
     <div class="row">
         @forelse ($data as $item)
             <div class="col-md-3">
-                <div class="card" style="min-height: 350px">
+                <div class="card" style="min-height: 400px">
                     <div class="card-body">
 
-                        <img src="https://www.shutterstock.com/image-photo/on-white-background-buttons-used-260nw-2048122016.jpg"
+                        <img src="{{ asset('storage/images/products/'.$item->image) }}"
                             alt="" class="img-fluid" style="width: 100%" height="200px">
 
-                        <h5 class="mt-3">Nama Produk</h5>
+                        <h5 class="mt-3">{{ $item->product_name }}</h5>
 
                         <div class="row mt-2">
                             <div class="col-6">
-                                <div class="text-danger fw-bold">Rp. 300.000</div>
+                                <div class="text-danger fw-bold">Rp. {{ number_format($item->price) }}</div>
                             </div>
                             <div class="col-6">
-                                <div class="text-muted">Stok : 30</div>
+                                <div class="text-muted">Stok : {{ $item->stock }}</div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer bg-white">
-                        <a href="#" class="btn btn-success mt-2 d-flex justify-content-center"> 🎯 Category </a>
+                        <a href="{{ route('product.show', $item->slug) }}" class="btn btn-success mt-2 d-flex justify-content-center"> 🎯 Detail </a>
                     </div>
                 </div>
             </div>

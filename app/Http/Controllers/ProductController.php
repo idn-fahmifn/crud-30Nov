@@ -47,9 +47,14 @@ class ProductController extends Controller
             $ext = $gambar->getClientOriginalExtension();
             $nama = 'myproduct_'.Carbon::now('Asia/jakarta')->format('Ymdhis').'.'.$ext; //myproduct_20251206103450.png
             $simpan['image'] = $nama;
+
+            // menyimpan gambar ke storage : 
+            $gambar->storeAs($path, $nama);
         }
 
-        return $simpan; 
+        Product::create($simpan);
+
+        return redirect()->route('product.index')->with('success','Product Created'); 
 
     }
 
