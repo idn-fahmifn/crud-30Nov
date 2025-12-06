@@ -67,6 +67,32 @@
     <div class="card mt-2">
         <div class="card-body">
             <div class="card-title h5">List Product</div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                    </thead>
+                    <tbody>
+                        @forelse ($produk as $item)
+                            <tr>
+                                <td>{{ $item->product_name }}</td>
+                                <td>Rp. {{ number_format($item->price) }}</td>
+                                <td>{{ $item->stock }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3">
+                                    <div class="alert alert-warning text-center py-4">
+                                        <p>⚠️ Belum ada product di kategori {{ $data->category_name }}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

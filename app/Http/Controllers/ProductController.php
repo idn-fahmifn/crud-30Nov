@@ -83,10 +83,9 @@ class ProductController extends Controller
         // kondisi saat ada nilai input file gambar
         if ($request->hasFile('image_product')) {
 
-            $data_lama = 'public/images/products/' .$data->image;
+            $data_lama = 'public/images/products/' . $data->image;
 
-            if($data->image && Storage::exists($data_lama))
-            {
+            if ($data->image && Storage::exists($data_lama)) {
                 Storage::delete($data_lama);
             }
 
@@ -103,6 +102,20 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')->with('success', 'Product Updated');
 
+    }
+
+    public function destroy($id)
+    {
+        $data = Product::findOrFail($id);
+
+        $data_lama = 'public/images/products/' . $data->image;
+
+        if ($data->image && Storage::exists($data_lama)) {
+            Storage::delete($data_lama);
+        }
+
+        $data->delete();
+        return redirect()->route('product.index')->with('success', 'Has Been Deleted!');
     }
 
 }

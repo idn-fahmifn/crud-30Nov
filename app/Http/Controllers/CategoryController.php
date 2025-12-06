@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -40,7 +41,8 @@ class CategoryController extends Controller
     public function show($param)
     {
         $data = Category::where('slug', $param)->firstOrFail();
-        return view('category.show', compact('data'));
+        $produk = Product::where('category_id', $data->id)->get();
+        return view('category.show', compact('data', 'produk'));
     }
 
     public function update(Request $request, $id)

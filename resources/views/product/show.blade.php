@@ -10,7 +10,7 @@
 @endsection
 
 @section('button-modal')
-    <form action="{{ route('category.destroy', $data->id) }}" method="post">
+    <form action="{{ route('product.destroy', $data->id) }}" method="post">
         @csrf
         @method('delete')
 
@@ -52,6 +52,10 @@
                     <tr>
                         <td>Product Name</td>
                         <td>{{ $data->product_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td>{{ $data->category->category_name }}</td>
                     </tr>
                     <tr>
                         <td>Price</td>
