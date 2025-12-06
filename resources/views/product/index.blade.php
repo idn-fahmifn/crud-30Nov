@@ -31,7 +31,7 @@
     @if (session('success'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong> ✅ Berhasil </strong> {{ session('success') }}.
-            
+
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
@@ -41,11 +41,12 @@
             <div class="col-md-3">
                 <div class="card" style="min-height: 350px">
                     <div class="card-body">
-                        
-                        <img src="https://www.shutterstock.com/image-photo/on-white-background-buttons-used-260nw-2048122016.jpg" alt="" class="img-fluid" style="width: 100%" height="200px">
+
+                        <img src="https://www.shutterstock.com/image-photo/on-white-background-buttons-used-260nw-2048122016.jpg"
+                            alt="" class="img-fluid" style="width: 100%" height="200px">
 
                         <h5 class="mt-3">Nama Produk</h5>
-                        
+
                         <div class="row mt-2">
                             <div class="col-6">
                                 <div class="text-danger fw-bold">Rp. 300.000</div>
@@ -75,16 +76,39 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Category</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Product</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="{{ route('category.store') }}" method="post">
+                <form action="{{ route('product.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group my-2">
-                            <label for="">Category Name</label>
-                            <input type="text" required class="form-control my-2" name="cat_name">
+                            <label for="">Product Name</label>
+                            <input type="text" required class="form-control my-2" name="prod_name">
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="">Category Product</label>
+                            <select name="category" class="form-control" required>
+                                <option value="">- choose category -</option>
+
+                                @foreach ($category as $item)
+                                    <option value="{{ $item->id }}"> {{ $item->category_name }} </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="">Price</label>
+                            <input type="number" required class="form-control my-2" name="price_product">
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="">Stock</label>
+                            <input type="number" required class="form-control my-2" name="stock_product">
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="">Image Product</label>
+                            <input type="file" required class="form-control my-2" name="image_product">
                         </div>
                         <div class="form-group my-2">
                             <label for="">Description</label>
