@@ -110,7 +110,7 @@
                         </div>
                         <div class="form-group my-2">
                             <label for="">Stock</label>
-                            <input type="number" value="{{ $data->stok }}" required class="form-control my-2" name="stock_product">
+                            <input type="number" value="{{ $data->stock }}" required class="form-control my-2" name="stock_product">
                         </div>
                         <div class="form-group my-2">
                             <label for="">Image Product</label>
